@@ -4,14 +4,12 @@ Command: npx gltfjsx@6.5.3 public/models/gallery/Gallery.gltf -o src/model -r pu
 */
 
 import React from "react";
-import { useGLTF, useAnimations } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 
 export function Model(props) {
   const group = React.useRef();
-  const { nodes, materials, animations } = useGLTF(
-    "/models/gallery/Gallery.gltf"
-  );
-  const { actions } = useAnimations(animations, group);
+  const { nodes, materials } = useGLTF("/models/gallery/Gallery.gltf");
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
