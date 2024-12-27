@@ -153,7 +153,7 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating }) => {
             doloribus quidem.
           </p>
           <button
-            onClick={() => onScreenChange("Gallery2")}
+            onClick={() => handleScreenChange("Gallery2")}
             className="bg-gray-400 bg-opacity-50  p-3 mt-3 rounded-full text-white font-medium"
           >
             Galeria 2
