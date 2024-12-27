@@ -234,7 +234,7 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating }) => {
             doloribus quidem.
           </p>
           <button
-            onClick={() => handleScreenChange("Home")}
+            onClick={() => onScreenChange("Home")}
             className="bg-gray-400 bg-opacity-50 p-3 rounded-full text-white font-medium"
           >
             Regresar al Inicio
