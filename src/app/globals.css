@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.mask-clip-path {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.travel-video {
+  @apply absolute right-[200px] top-0 z-20 h-[600px] w-[800px] origin-center overflow-hidden rounded-3xl md:w-[30vw];
+}
