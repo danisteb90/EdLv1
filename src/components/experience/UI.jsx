@@ -27,14 +27,14 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating }) => {
     // Fade in del volumen
     let volume = 0;
     const fadeInterval = setInterval(() => {
-      if (volume < 0.4) {
+      if (volume < 0.3) {
         volume += 0.01;
         audioRef.current.volume = volume;
       } else {
         audioRef.current.volume = 1;
         clearInterval(fadeInterval);
       }
-    }, 50);
+    }, 80);
   };
 
   const handleScreenChange = (nextScreen) => {
@@ -153,7 +153,7 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating }) => {
             doloribus quidem.
           </p>
           <button
-            onClick={() => handleScreenChange("Gallery2")}
+            onClick={() => onScreenChange("Gallery2")}
             className="bg-gray-400 bg-opacity-50  p-3 mt-3 rounded-full text-white font-medium"
           >
             Galeria 2
@@ -180,7 +180,7 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating }) => {
             doloribus quidem.
           </p>
           <button
-            onClick={() => handleScreenChange("Gallery3")}
+            onClick={() => onScreenChange("Gallery3")}
             className="bg-gray-400 bg-opacity-50  p-3 mt-3 rounded-full text-white font-medium"
           >
             Galeria 3
@@ -207,7 +207,7 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating }) => {
             doloribus quidem.
           </p>
           <button
-            onClick={() => handleScreenChange("Gallery4")}
+            onClick={() => onScreenChange("Gallery4")}
             className="bg-gray-400 bg-opacity-50  p-3 mt-3 rounded-full text-white font-medium"
           >
             Galeria 4
