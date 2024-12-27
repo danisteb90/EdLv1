@@ -81,7 +81,7 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating }) => {
 
       if (shouldChange) {
         lastScrollTime = currentTime;
-        handleScreenChange(nextScreen);
+        onScreenChange(nextScreen);
       }
     };
 
