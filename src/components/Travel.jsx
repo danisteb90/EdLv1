@@ -14,7 +14,7 @@ const Travel = () => {
       scrollTrigger: {
         trigger: "#travel-clip",
         start: "center center",
-        end: "+=800 -=4500",
+        end: "+=800 -=5000",
         scrub: false,
         pin: true,
         pinSpacing: true,
@@ -38,7 +38,7 @@ const Travel = () => {
   });
 
   return (
-    <div id="travel" className="min-h-[900vh] w-screen">
+    <div id="travel" className="min-h-1000vh] w-screen">
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
         <h2 className="text-sm uppercase md:text-[10px]">Bienvenidos!</h2>
         <div className="mt-5 text-center text-4xl uppercase leading-[0.8] md:text-[6rem]">
