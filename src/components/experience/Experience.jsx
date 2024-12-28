@@ -14,19 +14,19 @@ import projectState from "@/app/coords/experience-coord2.json";
 
 studio.initialize();
 studio.extend(extension);
-studio.ui.hide();
+// studio.ui.hide();
 
-const project = getProject("Experience", {
+const project = getProject("Experience2", {
   state: projectState,
 });
 const mainSheet = project.sheet("Main");
 
 const transitions = {
-  Home: [0, 2],
-  Gallery1: [2, 4],
-  Gallery2: [4, 6],
-  Gallery3: [6, 12],
-  Gallery4: [12, 16],
+  Home: [0, 1],
+  Gallery1: [1, 3],
+  Gallery2: [3, 5],
+  Gallery3: [5, 11],
+  Gallery4: [11, 15],
 };
 
 const Experience = () => {
