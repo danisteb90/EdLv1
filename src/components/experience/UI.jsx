@@ -37,70 +37,70 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating }) => {
     }, 80);
   };
 
-  const handleScreenChange = (nextScreen) => {
+  const handleScreenChange = () => {
     playTransitionSound();
-    onScreenChange(nextScreen);
+    onScreenChange("Gallery5");
   };
 
-  useEffect(() => {
-    let lastScrollTime = 0;
-    const scrollCooldown = 1000;
+  // useEffect(() => {
+  //   let lastScrollTime = 0;
+  //   const scrollCooldown = 1000;
 
-    const handleScroll = (e) => {
-      e.preventDefault();
+  //   const handleScroll = (e) => {
+  //     e.preventDefault();
 
-      if (isAnimating) return;
+  //     if (isAnimating) return;
 
-      const currentTime = Date.now();
-      if (currentTime - lastScrollTime < scrollCooldown) return;
+  //     const currentTime = Date.now();
+  //     if (currentTime - lastScrollTime < scrollCooldown) return;
 
-      const direction = e.deltaY > 0 ? "backward" : "forward";
+  //     const direction = e.deltaY > 0 ? "backward" : "forward";
 
-      const screenSequence = [
-        "Home",
-        "Gallery1",
-        "Gallery2",
-        "Gallery3",
-        "Gallery4",
-      ];
-      const currentIndex = screenSequence.indexOf(currentScreen);
+  //     const screenSequence = [
+  //       "Home",
+  //       "Gallery1",
+  //       "Gallery2",
+  //       "Gallery3",
+  //       "Gallery4",
+  //     ];
+  //     const currentIndex = screenSequence.indexOf(currentScreen);
 
-      let shouldChange = false;
-      let nextScreen = null;
+  //     let shouldChange = false;
+  //     let nextScreen = null;
 
-      if (direction === "forward" && currentIndex > 0) {
-        shouldChange = true;
-        nextScreen = screenSequence[currentIndex - 1];
-      } else if (
-        direction === "backward" &&
-        currentIndex < screenSequence.length - 1
-      ) {
-        shouldChange = true;
-        nextScreen = screenSequence[currentIndex + 1];
-      }
+  //     if (direction === "forward" && currentIndex > 0) {
+  //       shouldChange = true;
+  //       nextScreen = screenSequence[currentIndex - 1];
+  //     } else if (
+  //       direction === "backward" &&
+  //       currentIndex < screenSequence.length - 1
+  //     ) {
+  //       shouldChange = true;
+  //       nextScreen = screenSequence[currentIndex + 1];
+  //     }
 
-      if (shouldChange) {
-        lastScrollTime = currentTime;
-        onScreenChange(nextScreen);
-      }
-    };
+  //     if (shouldChange) {
+  //       lastScrollTime = currentTime;
+  //       onScreenChange(nextScreen);
+  //     }
+  //   };
 
-    const mainElement = mainRef.current;
-    if (mainElement && currentScreen !== "Main") {
-      mainElement.addEventListener("wheel", handleScroll, {
-        passive: false,
-        capture: true,
-      });
-    }
+  //   const mainElement = mainRef.current;
+  //   if (mainElement && currentScreen !== "Main") {
+  //     mainElement.addEventListener("wheel", handleScroll, {
+  //       passive: false,
+  //       capture: true,
+  //     });
+  //   }
 
-    return () => {
-      if (mainElement) {
-        mainElement.removeEventListener("wheel", handleScroll, {
-          capture: true,
-        });
-      }
-    };
-  }, [currentScreen, onScreenChange, isAnimating]);
+  //   return () => {
+  //     if (mainElement) {
+  //       mainElement.removeEventListener("wheel", handleScroll, {
+  //         capture: true,
+  //       });
+  //     }
+  //   };
+  // }, [currentScreen, onScreenChange, isAnimating]);
 
   return (
     <main
@@ -120,10 +120,10 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating }) => {
         </h1>
         <div className="flex items-center gap-3 mt-2">
           <button
-            onClick={() => handleScreenChange("Gallery1")}
+            onClick={() => onScreenChange("Gallery5")}
             className="bg-gray-400 bg-opacity-50 p-3 rounded-full text-white font-medium"
           >
-            Galeria 1
+            Galeria
           </button>
           {/* <button
 						onClick={() => onScreenChange("Windmill")}
@@ -217,14 +217,14 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating }) => {
       <section
         animate={isAnimating ? "" : currentScreen}
         className={`absolute inset-0 flex flex-col items-end justify-center p-10 transition-opacity duration-1000 ${
-          currentScreen === "Gallery4" && !isAnimating
+          currentScreen === "Gallery5" && !isAnimating
             ? ""
             : "opacity-0 pointer-events-none"
         }`}
       >
         <div className="md:max-w-2xl">
           <h1 className="text-7xl text-white opacity-90 font-extrabold -ml-1">
-            Galeria 4
+            Galeria
           </h1>
           <p className="text-white mt-2">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam

@@ -27,6 +27,7 @@ const transitions = {
   Gallery2: [3, 5],
   Gallery3: [5, 11],
   Gallery4: [11, 15],
+  Gallery5: [1, 15],
 };
 
 const Experience = () => {
@@ -34,7 +35,7 @@ const Experience = () => {
   const isSetup = useRef(false);
 
   const [currentScreen, setCurrentScreen] = useState("Intro");
-  const [targetScreen, setTargetScreen] = useState("Intro");
+  const [targetScreen, setTargetScreen] = useState("Home");
 
   useEffect(() => {
     project.ready.then(() => {
@@ -58,6 +59,7 @@ const Experience = () => {
         "Gallery2",
         "Gallery3",
         "Gallery4",
+        "Gallery5",
       ];
       const currentIndex = screenSequence.indexOf(currentScreen);
       const targetIndex = screenSequence.indexOf(targetScreen);
