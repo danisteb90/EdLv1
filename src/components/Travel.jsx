@@ -18,7 +18,7 @@ const Travel = () => {
         scrub: false,
         pin: true,
         pinSpacing: true,
-        markers: true,
+        markers: false,
         toggleActions: "play reverse play reverse",
       },
     });
