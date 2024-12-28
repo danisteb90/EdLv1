@@ -14,7 +14,7 @@ import projectState from "@/app/coords/experience-coord2.json";
 
 studio.initialize();
 studio.extend(extension);
-// studio.ui.hide();
+studio.ui.hide();
 
 const project = getProject("Experience2", {
   state: projectState,
