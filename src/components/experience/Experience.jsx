@@ -10,7 +10,7 @@ import extension from "@theatre/r3f/dist/extension";
 import studio from "@theatre/studio";
 import { useEffect, useRef, useState } from "react";
 import { UI } from "./UI";
-import projectState from "@/app/coords/experience-coord.json";
+import projectState from "@/app/coords/experience-coord2.json";
 
 studio.initialize();
 studio.extend(extension);
@@ -23,10 +23,10 @@ const mainSheet = project.sheet("Main");
 
 const transitions = {
   Home: [0, 2],
-  Gallery1: [2, 6],
-  Gallery2: [6, 10],
-  Gallery3: [10, 18],
-  Gallery4: [18, 28],
+  Gallery1: [2, 4],
+  Gallery2: [4, 6],
+  Gallery3: [6, 12],
+  Gallery4: [12, 16],
 };
 
 const Experience = () => {
@@ -90,10 +90,7 @@ const Experience = () => {
         isAnimating={currentScreen !== targetScreen}
       />
       <section className="w-full h-full">
-        <Canvas
-          camera={{ position: [0, 0, 4], fov: 40, near: 0.1, far: 1000 }}
-          gl={{ preserveDrawingBuffer: true }}
-        >
+        <Canvas gl={{ preserveDrawingBuffer: true }}>
           <ambientLight intensity={2.5} />
           <SheetProvider sheet={mainSheet}>
             <PerspectiveCamera

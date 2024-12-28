@@ -14,11 +14,12 @@ const Travel = () => {
       scrollTrigger: {
         trigger: "#travel-clip",
         start: "center center",
-        end: "+=800 -=6000",
-        scrub: 0.5,
+        end: "+=800 -=4500",
+        scrub: false,
         pin: true,
         pinSpacing: true,
-        markers: false,
+        markers: true,
+        toggleActions: "play reverse play reverse",
       },
     });
     clipAnimation
@@ -27,16 +28,17 @@ const Travel = () => {
         height: "100vh",
         right: "0",
         borderRadius: "0",
-        duration: 0.1,
+        duration: 1,
       })
       .to(".mask-clip-path", {
         position: "sticky",
         top: "0",
+        duration: 0.5,
       });
   });
 
   return (
-    <div id="travel" className="min-h-[800vh] w-screen">
+    <div id="travel" className="min-h-[900vh] w-screen">
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
         <h2 className="text-sm uppercase md:text-[10px]">Bienvenidos!</h2>
         <div className="mt-5 text-center text-4xl uppercase leading-[0.8] md:text-[6rem]">
