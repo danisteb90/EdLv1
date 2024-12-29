@@ -23,19 +23,40 @@ html {
   height: 100vh;
   overflow: hidden;
   z-index: 1000;
+  background-color: #efece5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .heroContainer h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  font-family: "linotype-sabon", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  width: 90%;
+  font-size: 5vw;
   text-align: center;
-  font-size: 80px;
-  font-weight: 600;
-  text-transform: uppercase;
   line-height: 100%;
-  z-index: 1;
+  z-index: 10;
+  pointer-events: none;
+  margin-bottom: 100px;
+  mix-blend-mode: difference;
+  color: white;
+}
+
+.heroContainer h2 {
+  font-family: "linotype-sabon", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  width: 90%;
+  font-size: 3vw;
+  text-align: center;
+  line-height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  color: white;
 }
 
 .items {
@@ -61,4 +82,9 @@ html {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+:root {
+  --blendmode-title: difference;
+  --color-title: #000000;
 }

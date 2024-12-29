@@ -99,6 +99,9 @@ const Hero = () => {
     <div className="heroContainer">
       <div ref={containerRef} className="items"></div>
       <h1>Escuela de Libertad</h1>
+      <h2>
+        Título principal o <br /> búsquedas de cliente
+      </h2>
     </div>
   );
 };
