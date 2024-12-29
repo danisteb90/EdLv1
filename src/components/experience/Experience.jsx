@@ -77,6 +77,7 @@ const Experience = () => {
         .play({
           range,
           direction: isForward ? "normal" : "reverse",
+          rate: isForward ? 1 : 3,
         })
         .then(() => {
           setCurrentScreen(targetScreen);

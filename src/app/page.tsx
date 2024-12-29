@@ -29,7 +29,6 @@ export default function Home() {
     <div className="relative min-h-screen w-full overflow-x-hidden">
       <Hero />
       <Travel />
-      <Hero />
     </div>
   );
 }
