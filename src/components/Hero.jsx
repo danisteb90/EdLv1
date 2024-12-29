@@ -13,9 +13,11 @@ const Hero = () => {
 
     function addNewItem(x, y) {
       const now = Date.now();
-      if (now - lastAddTimeRef.current < 200) return;
+      if (now - lastAddTimeRef.current < 80) return;
 
       lastAddTimeRef.current = now;
+
+      if (manageItemLimit()) return;
 
       const newItem = document.createElement("div");
       newItem.className = "item";
@@ -38,14 +40,14 @@ const Hero = () => {
         borderRadius: "10px",
         ease: "power2.out",
       });
-
-      manageItemLimit();
     }
 
     function manageItemLimit() {
-      while (containerRef.current.children.length > 20) {
-        containerRef.current.removeChild(containerRef.current.firstChild);
+      if (containerRef.current.children.length > 60) {
+        startAnimation();
+        return true;
       }
+      return false;
     }
 
     function startAnimation() {
@@ -63,7 +65,7 @@ const Hero = () => {
         scale: 0,
         opacity: 0,
         duration: 1,
-        stagger: 0.025,
+        stagger: 0.015,
         onComplete: function () {
           items.forEach((item) => {
             if (item.parentNode) {
@@ -78,7 +80,7 @@ const Hero = () => {
     const handleMouseMove = (event) => {
       clearTimeout(animationTimeoutRef.current);
       addNewItem(event.pageX, event.pageY);
-      animationTimeoutRef.current = setTimeout(startAnimation, 100);
+      animationTimeoutRef.current = setTimeout(startAnimation, 50);
     };
 
     // Agregar el event listener
