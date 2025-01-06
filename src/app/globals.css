@@ -41,8 +41,8 @@ html {
   z-index: 10;
   pointer-events: none;
   margin-bottom: 100px;
-  mix-blend-mode: difference;
-  color: white;
+  /* mix-blend-mode: difference; */
+  color: #283894;
 }
 
 .heroContainer h2 {
@@ -55,8 +55,9 @@ html {
   line-height: 100%;
   z-index: 10;
   pointer-events: none;
-  mix-blend-mode: difference;
-  color: white;
+  /* mix-blend-mode: difference;
+  color: white; */
+  color: black;
 }
 
 .items {

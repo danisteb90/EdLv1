@@ -1,5 +1,4 @@
 "use client";
-import { Model } from "./Model";
 import { Canvas } from "@react-three/fiber";
 
 import { getProject } from "@theatre/core";
@@ -10,24 +9,25 @@ import extension from "@theatre/r3f/dist/extension";
 import studio from "@theatre/studio";
 import { useEffect, useRef, useState } from "react";
 import { UI } from "./UI";
-import projectState from "@/app/coords/experience-coord2.json";
+import projectState from "@/app/coords/Experiencev1.json";
+import { GalleryVillage } from "./GalleryVillage";
 
 studio.initialize();
 studio.extend(extension);
 studio.ui.hide();
 
-const project = getProject("Experience2", {
+const project = getProject("Experiencev1", {
   state: projectState,
 });
 const mainSheet = project.sheet("Main");
 
 const transitions = {
-  Home: [0, 1],
-  Gallery1: [1, 3],
-  Gallery2: [3, 5],
-  Gallery3: [5, 11],
-  Gallery4: [11, 15],
-  Gallery5: [1, 15],
+  Home: [0, 14],
+  Gallery1: [14, 27],
+  Gallery2: [27, 40],
+  Gallery3: [40, 49],
+  Gallery4: [49, 55],
+  Gallery5: [0, 55],
 };
 
 const Experience = () => {
@@ -35,7 +35,7 @@ const Experience = () => {
   const isSetup = useRef(false);
 
   const [currentScreen, setCurrentScreen] = useState("Intro");
-  const [targetScreen, setTargetScreen] = useState("Home");
+  const [targetScreen, setTargetScreen] = useState("Intro");
 
   useEffect(() => {
     project.ready.then(() => {
@@ -63,9 +63,10 @@ const Experience = () => {
       ];
       const currentIndex = screenSequence.indexOf(currentScreen);
       const targetIndex = screenSequence.indexOf(targetScreen);
-      const isForward = targetIndex > currentIndex;
 
-      // Aseguramos que el rango siempre tenga el número menor primero
+      const isForward =
+        targetScreen === "Gallery5" ? false : targetIndex > currentIndex;
+
       const range = isForward
         ? targetTransition
         : [
@@ -77,7 +78,7 @@ const Experience = () => {
         .play({
           range,
           direction: isForward ? "normal" : "reverse",
-          rate: isForward ? 1 : 3,
+          rate: isForward ? 3 : 3,
         })
         .then(() => {
           setCurrentScreen(targetScreen);
@@ -97,7 +98,7 @@ const Experience = () => {
           <ambientLight intensity={2.5} />
           <SheetProvider sheet={mainSheet}>
             <PerspectiveCamera
-              position={[0, 0, 4]}
+              position={[0, 0, 100]}
               fov={40}
               near={0.1}
               far={1000}
@@ -113,7 +114,7 @@ const Experience = () => {
               <octahedronGeometry args={[0.25, 0]} />
               <meshPhongMaterial color="yellow" />
             </e.mesh>
-            <Model />
+            <GalleryVillage />
           </SheetProvider>
         </Canvas>
       </section>

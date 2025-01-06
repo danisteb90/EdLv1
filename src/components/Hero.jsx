@@ -13,7 +13,8 @@ const Hero = () => {
 
     function addNewItem(x, y) {
       const now = Date.now();
-      if (now - lastAddTimeRef.current < 80) return;
+      // if (now - lastAddTimeRef.current < 500) return;
+      if (now - lastAddTimeRef.current < 60) return;
 
       lastAddTimeRef.current = now;
 
@@ -35,7 +36,7 @@ const Hero = () => {
 
       gsap.to(newItem, {
         scale: 1,
-        opacity: 1,
+        opacity: 0.8,
         duration: 0.3,
         borderRadius: "10px",
         ease: "power2.out",
