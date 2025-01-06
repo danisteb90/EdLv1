@@ -7,10 +7,11 @@ import { editable as e } from "@theatre/r3f";
 
 import extension from "@theatre/r3f/dist/extension";
 import studio from "@theatre/studio";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { UI } from "./UI";
 import projectState from "@/app/coords/Experiencev1.json";
 import { GalleryVillage } from "./GalleryVillage";
+import { Loader } from "@react-three/drei";
 
 studio.initialize();
 studio.extend(extension);
@@ -78,7 +79,7 @@ const Experience = () => {
         .play({
           range,
           direction: isForward ? "normal" : "reverse",
-          rate: isForward ? 3 : 3,
+          rate: isForward ? 1 : 3,
         })
         .then(() => {
           setCurrentScreen(targetScreen);
@@ -114,9 +115,12 @@ const Experience = () => {
               <octahedronGeometry args={[0.25, 0]} />
               <meshPhongMaterial color="yellow" />
             </e.mesh>
-            <GalleryVillage />
+            <Suspense fallback={null}>
+              <GalleryVillage />
+            </Suspense>
           </SheetProvider>
         </Canvas>
+        <Loader />
       </section>
     </>
   );
