@@ -1,7 +1,7 @@
 "use client";
 
 import gsap from "gsap";
-import React from "react";
+import React, { useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Experience from "./experience/Experience";
@@ -9,17 +9,34 @@ import Experience from "./experience/Experience";
 gsap.registerPlugin(ScrollTrigger);
 
 const Travel = () => {
+  const [animationComplete, setAnimationComplete] = useState(false);
+
   useGSAP(() => {
     const clipAnimation = gsap.timeline({
       scrollTrigger: {
         trigger: "#travel-clip",
         start: "center center",
         end: "+=800 -=200",
-        scrub: false,
         pin: true,
         pinSpacing: true,
-        markers: false,
+        markers: true,
         toggleActions: "play reverse play reverse",
+        onEnter: () => {
+          console.log("Entrando en la animación");
+          setAnimationComplete(true);
+        },
+        onLeave: () => {
+          console.log("Animación completada");
+          setAnimationComplete(false);
+        },
+        onEnterBack: () => {
+          console.log("Volviendo a entrar");
+          setAnimationComplete(true);
+        },
+        onLeaveBack: () => {
+          setAnimationComplete(false);
+          console.log("Saliendo hacia atrás");
+        },
       },
     });
     clipAnimation
@@ -29,6 +46,9 @@ const Travel = () => {
         right: "0",
         borderRadius: "0",
         duration: 1,
+        ease: "power2.inOut",
+        force3D: true,
+        willChange: "transform",
       })
       .to(".mask-clip-path", {
         position: "sticky",
@@ -46,7 +66,7 @@ const Travel = () => {
         </div>
         <div className="h-[100dvh] w-full" id="travel-clip">
           <div className="mask-clip-path travel-experience">
-            <Experience />
+            <Experience isReady={animationComplete} />
           </div>
         </div>
         <p>Example Text</p>

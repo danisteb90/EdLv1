@@ -1,7 +1,11 @@
-export const UI = ({ currentScreen, onScreenChange, isAnimating }) => {
+export const UI = ({ currentScreen, onScreenChange, isAnimating, isReady }) => {
   return (
     <main
-      className="fixed inset-0 z-10"
+      className={`fixed inset-0 z-10 transition-opacity duration-1000 ${
+        isReady
+          ? "opacity-100 duration-[2000ms]"
+          : "opacity-0 pointer-events-none"
+      }`}
       animate={isAnimating ? "" : currentScreen}
     >
       <section

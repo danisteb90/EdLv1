@@ -31,7 +31,7 @@ const transitions = {
   Gallery5: [0, 55],
 };
 
-const Experience = () => {
+const Experience = ({ isReady }) => {
   const cameraTargetRef = useRef();
   const isSetup = useRef(false);
 
@@ -93,9 +93,18 @@ const Experience = () => {
         currentScreen={currentScreen}
         onScreenChange={setTargetScreen}
         isAnimating={currentScreen !== targetScreen}
+        isReady={isReady}
       />
       <section className="w-full h-full">
-        <Canvas gl={{ preserveDrawingBuffer: true }}>
+        <Canvas
+          gl={{
+            preserveDrawingBuffer: true,
+            powerPreference: "high-performance",
+            antialias: false,
+          }}
+          dpr={[1, 2]}
+          performance={{ min: 0.5 }}
+        >
           <ambientLight intensity={2.5} />
           <SheetProvider sheet={mainSheet}>
             <PerspectiveCamera
