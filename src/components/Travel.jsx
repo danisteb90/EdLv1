@@ -19,7 +19,7 @@ const Travel = () => {
         end: "+=800 -=200",
         pin: true,
         pinSpacing: true,
-        markers: true,
+        markers: false,
         toggleActions: "play reverse play reverse",
         onEnter: () => {
           console.log("Entrando en la animación");
