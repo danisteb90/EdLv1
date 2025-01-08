@@ -97,8 +97,8 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="heroContainer">
-      <div ref={containerRef} className="items"></div>
+    <div className="heroContainer" style={{ zIndex: 1 }}>
+      <div ref={containerRef} className="items" style={{ zIndex: 1 }}></div>
       <h1>Escuela de Libertad</h1>
       <h2>
         Título principal o <br /> búsquedas de cliente
