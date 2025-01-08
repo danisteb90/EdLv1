@@ -494,29 +494,26 @@ export function GalleryVillage(props) {
               material={materials.cuadroPared2}
             />
           </group>
-          <e.group
-            theatreKey="cuadroCentral"
-            name="cuadroCentral"
-            position={[-3.271, 6.99, 31.63]}
-          >
-            <mesh
-              name="cuadroCentral_1"
-              geometry={nodes.cuadroCentral_1.geometry}
-              material={materials.cuadroCentral}
-            />
-            <mesh
-              name="cuadroCentral_2"
-              geometry={nodes.cuadroCentral_2.geometry}
-              material={materials.paspartu}
-            />
-            <mesh
-              name="cuadroCentral_3"
-              geometry={nodes.cuadroCentral_3.geometry}
-              material={materials.marcoCuadro}
-            />
+          <e.group theatreKey="cuadroCentral">
+            <group name="cuadroCentral" position={[-3.271, 6.99, 31.63]}>
+              <mesh
+                name="cuadroCentral_1"
+                geometry={nodes.cuadroCentral_1.geometry}
+                material={materials.cuadroCentral}
+              />
+              <mesh
+                name="cuadroCentral_2"
+                geometry={nodes.cuadroCentral_2.geometry}
+                material={materials.paspartu}
+              />
+              <mesh
+                name="cuadroCentral_3"
+                geometry={nodes.cuadroCentral_3.geometry}
+                material={materials.marcoCuadro}
+              />
+            </group>
           </e.group>
           <mesh
-            theatreKey="galeriaFondo"
             name="galeriaFondo"
             geometry={nodes.galeriaFondo.geometry}
             material={materials.baseColor_3}

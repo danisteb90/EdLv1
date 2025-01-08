@@ -9,7 +9,7 @@ import extension from "@theatre/r3f/dist/extension";
 import studio from "@theatre/studio";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { UI } from "./UI";
-import projectState from "@/app/coords/Experiencev1.json";
+import projectState from "@/app/coords/Experiencev1.1.json";
 import { GalleryVillage } from "./GalleryVillage";
 import { Loader } from "@react-three/drei";
 
@@ -17,7 +17,7 @@ studio.initialize();
 studio.extend(extension);
 studio.ui.hide();
 
-const project = getProject("Experiencev1", {
+const project = getProject("Experiencev2", {
   state: projectState,
 });
 const mainSheet = project.sheet("Main");
@@ -28,7 +28,7 @@ const transitions = {
   Gallery2: [27, 40],
   Gallery3: [40, 49],
   Gallery4: [49, 55],
-  Gallery5: [0, 55],
+  End: [55, 60],
 };
 
 const Experience = ({ isReady }) => {
@@ -47,39 +47,16 @@ const Experience = ({ isReady }) => {
         return;
       }
 
-      const currentTransition = transitions[currentScreen];
       const targetTransition = transitions[targetScreen];
-
       if (!targetTransition) {
         return;
       }
 
-      const screenSequence = [
-        "Home",
-        "Gallery1",
-        "Gallery2",
-        "Gallery3",
-        "Gallery4",
-        "Gallery5",
-      ];
-      const currentIndex = screenSequence.indexOf(currentScreen);
-      const targetIndex = screenSequence.indexOf(targetScreen);
-
-      const isForward =
-        targetScreen === "Gallery5" ? false : targetIndex > currentIndex;
-
-      const range = isForward
-        ? targetTransition
-        : [
-            Math.min(currentTransition[0], currentTransition[1]),
-            Math.max(currentTransition[0], currentTransition[1]),
-          ];
-
       mainSheet.sequence
         .play({
-          range,
-          direction: isForward ? "normal" : "reverse",
-          rate: isForward ? 1 : 3,
+          range: targetTransition,
+          direction: "normal",
+          rate: 1,
         })
         .then(() => {
           setCurrentScreen(targetScreen);
