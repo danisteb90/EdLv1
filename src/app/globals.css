@@ -17,6 +17,11 @@ html {
   @apply absolute right-[200px] top-0 z-20 h-[600px] w-[800px] origin-center overflow-hidden rounded-3xl md:w-[30vw];
 }
 
+:root {
+  --blendmode-title: difference;
+  --color-title: #000000;
+}
+
 .heroContainer {
   position: relative;
   width: 100vw;
@@ -92,7 +97,50 @@ html {
   width: 100%;
 }
 
-:root {
-  --blendmode-title: difference;
-  --color-title: #000000;
+.spinner {
+  opacity: 0;
+  animation: spinnerAnimation 4s ease-in-out 1 forwards, spin 1s linear infinite;
+}
+
+svg path {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 3px;
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: textAnimation 4s ease-in-out 1 forwards;
+}
+
+@keyframes textAnimation {
+  0% {
+    stroke-dashoffset: 900;
+  }
+  80% {
+    fill: transparent;
+  }
+  100% {
+    fill: #fff;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes spinnerAnimation {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

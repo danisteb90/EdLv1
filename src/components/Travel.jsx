@@ -20,6 +20,7 @@ const Travel = () => {
         pin: true,
         pinSpacing: true,
         markers: false,
+        // scrub: 0.5,
         toggleActions: "play reverse play reverse",
         onEnter: () => {
           console.log("Entrando en la animación");
@@ -45,10 +46,13 @@ const Travel = () => {
         height: "100vh",
         right: "0",
         borderRadius: "0",
-        duration: 1,
-        ease: "power2.inOut",
+        duration: 1.5,
+        ease: "power4.inOut",
         force3D: true,
         willChange: "transform",
+        stagger: {
+          amount: 0.3,
+        },
       })
       .to(".mask-clip-path", {
         position: "sticky",
