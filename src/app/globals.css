@@ -15,7 +15,7 @@ html {
 }
 
 .travel-experience {
-  @apply absolute right-[200px] top-0 z-20 h-[800px] w-[800px] origin-center overflow-hidden rounded-3xl md:w-[30vw];
+  @apply absolute right-[200px] top-0 z-20 h-[600px] w-[800px] origin-center overflow-hidden rounded-3xl md:w-[30vw];
 }
 
 :root {

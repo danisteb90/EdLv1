@@ -3,12 +3,12 @@ import React from "react";
 const Footer = () => {
   return (
     <div
-      className="relative h-[600px]"
+      className="relative h-[400px]"
       style={{
         clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)",
       }}
     >
-      <div className="fixed h-[600px] w-full bottom-0">
+      <div className="fixed h-[400px] w-full bottom-0">
         <Content />
       </div>
     </div>
@@ -57,8 +57,8 @@ const Content = () => {
           </ul>
         </div>
       </div>
-      <div className="w-full flex items-center justify-start text-center px-12 mt-32">
-        <h1 className="text-5xl md:text-9xl font-light leading-none mb-4">
+      <div className="w-full flex items-center justify-start text-center px-12 mt-24">
+        <h1 className="text-6xl md:text-6xl font-light leading-none mb-4">
           Escuela de Libertad
         </h1>
         <span className="text-sm opacity-80">©copyright</span>
