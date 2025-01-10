@@ -1,4 +1,35 @@
+import React, { useRef, useState } from "react";
+
 export const UI = ({ currentScreen, onScreenChange, isAnimating, isReady }) => {
+  const audioRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(false);
+
+  const handleClick = (screen) => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0;
+      audioRef.current.play();
+
+      // Incrementar volumen gradualmente
+      let vol = 0;
+      const interval = setInterval(() => {
+        if (vol < 0.39) {
+          vol += 0.1;
+          audioRef.current.volume = Math.min(vol, 0.4);
+        } else {
+          clearInterval(interval);
+        }
+      }, 300);
+    }
+    onScreenChange(screen);
+  };
+
+  const handleMute = () => {
+    if (audioRef.current) {
+      audioRef.current.muted = !audioRef.current.muted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
     <main
       className={`fixed inset-0 z-10 transition-opacity duration-1000 ${
@@ -8,6 +39,49 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating, isReady }) => {
       }`}
       animate={isAnimating ? "" : currentScreen}
     >
+      <audio ref={audioRef} src="/assets/japanese-style.mp3" />
+      <button
+        onClick={handleMute}
+        className="fixed bottom-5 right-5 w-12 h-12 bg-gray-800 bg-opacity-80 rounded-full flex items-center justify-center text-white hover:bg-opacity-100 transition-all z-50"
+      >
+        {isMuted ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+            />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
+            />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+            />
+          </svg>
+        )}
+      </button>
       <section
         className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-5000 ${
           currentScreen === "Intro" && !isAnimating
@@ -15,13 +89,13 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating, isReady }) => {
             : "opacity-0 pointer-events-none"
         }`}
       >
-        <h1 className="text-7xl text-gray-800 opacity-90 font-extrabold w-full ml-[20vw] text-start">
+        <h1 className="text-7xl text-gray-800 opacity-100 font-extrabold w-full ml-[20vw] text-start">
           Escuela de Libertad
         </h1>
         <div className="flex items-center gap-3 mt-2 w-full ml-[20vw]">
           <button
-            onClick={() => onScreenChange("Home")}
-            className="bg-gray-800 bg-opacity-50 p-3 rounded-full text-white font-medium text-xl"
+            onClick={() => handleClick("Home")}
+            className="bg-gray-800 bg-opacity-80 p-3 rounded-full text-white font-medium text-xl"
           >
             Empezemos la aventura!
           </button>
@@ -48,7 +122,7 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating, isReady }) => {
           </p>
           <button
             onClick={() => onScreenChange("Gallery1")}
-            className="bg-gray-400 bg-opacity-50  p-3 mt-3 rounded-full text-white font-medium"
+            className="bg-gray-400 bg-opacity-80 p-3 mt-3 rounded-xl text-gray-900 font-medium"
           >
             Viaje 1
           </button>
@@ -75,7 +149,7 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating, isReady }) => {
           </p>
           <button
             onClick={() => onScreenChange("Gallery2")}
-            className="bg-gray-400 bg-opacity-50  p-3 mt-3 rounded-full text-white font-medium"
+            className="bg-gray-400 bg-opacity-80 p-3 mt-3 rounded-xl text-gray-900 font-medium"
           >
             Viaje 2
           </button>
@@ -102,7 +176,7 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating, isReady }) => {
           </p>
           <button
             onClick={() => onScreenChange("Gallery3")}
-            className="bg-gray-400 bg-opacity-50  p-3 mt-3 rounded-full text-white font-medium"
+            className="bg-gray-400 bg-opacity-80 p-3 mt-3 rounded-xl text-gray-900 font-medium"
           >
             Viaje 3
           </button>
@@ -129,7 +203,7 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating, isReady }) => {
           </p>
           <button
             onClick={() => onScreenChange("Gallery4")}
-            className="bg-gray-400 bg-opacity-50  p-3 mt-3 rounded-full text-white font-medium"
+            className="bg-gray-400 bg-opacity-80 p-3 mt-3 rounded-xl text-gray-900 font-medium"
           >
             Viaje 4
           </button>
@@ -156,7 +230,7 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating, isReady }) => {
           </p>
           <button
             onClick={() => onScreenChange("End")}
-            className="bg-gray-400 bg-opacity-50 p-3 rounded-full text-white font-medium"
+            className="bg-gray-400 bg-opacity-80 p-3 rounded-xl text-gray-900 font-medium"
           >
             Regresar al Inicio
           </button>
@@ -175,7 +249,7 @@ export const UI = ({ currentScreen, onScreenChange, isAnimating, isReady }) => {
         <div className="flex items-center gap-3 mt-2 w-full ml-[20vw]">
           <button
             onClick={() => onScreenChange("Home")}
-            className="bg-gray-800 bg-opacity-50 p-3 rounded-full text-white font-medium text-xl"
+            className="bg-gray-800 bg-opacity-80 p-3 rounded-xl text-white font-medium text-xl"
           >
             Empezemos la aventura!
           </button>

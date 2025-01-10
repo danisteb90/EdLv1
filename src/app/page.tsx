@@ -5,6 +5,7 @@ import Lenis from "lenis";
 import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Footer from "@/components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,6 +30,7 @@ export default function Home() {
     <div className="relative min-h-screen w-full overflow-x-hidden">
       <Hero />
       <Travel />
+      <Footer />
     </div>
   );
 }

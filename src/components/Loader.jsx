@@ -10,7 +10,7 @@ const Loader = () => {
     const timer = setTimeout(() => {
       document.body.classList.remove("no-scroll");
       setIsLoading(false);
-    }, 5000);
+    }, 4000);
 
     return () => {
       document.body.classList.remove("no-scroll");
