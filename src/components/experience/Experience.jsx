@@ -12,14 +12,6 @@ import { UI } from "./UI";
 import projectState from "@/app/coords/Experiencev1.1.json";
 import { GalleryVillage } from "./GalleryVillage";
 import { Loader } from "@react-three/drei";
-import { Perf } from "r3f-perf";
-import {
-  Bloom,
-  DepthOfField,
-  EffectComposer,
-  ToneMapping,
-} from "@react-three/postprocessing";
-import { ToneMappingMode } from "postprocessing";
 
 studio.initialize();
 studio.extend(extension);
