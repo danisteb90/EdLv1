@@ -22,25 +22,28 @@ const Hero = () => {
 
       const newItem = document.createElement("div");
       newItem.className = "item";
-      newItem.style.left = `${x - 75}px`;
-      newItem.style.top = `${y - 75}px`;
+      newItem.style.left = `${x - 95}px`;
+      newItem.style.top = `${y - 95}px`;
       newItem.style.opacity = "0";
       newItem.style.transform = "scale(0)";
 
       const img = document.createElement("img");
       img.src = `./assets/isla${imageIndexRef.current}.png`;
       newItem.appendChild(img);
-      imageIndexRef.current = (imageIndexRef.current % 9) + 1;
+
+      const scale = 0.2 + (imageIndexRef.current - 1) * 0.1;
 
       containerRef.current.appendChild(newItem);
 
       gsap.to(newItem, {
-        scale: 1,
+        scale: scale,
         opacity: 0.8,
         duration: 0.3,
-        borderRadius: "10px",
+        borderRadius: "120px",
         ease: "power2.out",
       });
+
+      imageIndexRef.current = (imageIndexRef.current % 9) + 1;
     }
 
     function manageItemLimit() {
