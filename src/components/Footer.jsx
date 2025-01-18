@@ -8,7 +8,7 @@ const Footer = () => {
         clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)",
       }}
     >
-      <div className="fixed h-[400px] w-full bottom-0">
+      <div className="absolute h-[40vh] w-full bottom-0">
         <Content />
       </div>
     </div>

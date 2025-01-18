@@ -18,78 +18,6 @@ html {
   @apply absolute right-[200px] top-0 z-20 h-[600px] w-[800px] origin-center overflow-hidden rounded-3xl md:w-[30vw];
 }
 
-:root {
-  --blendmode-title: difference;
-  --color-title: #000000;
-}
-
-.heroContainer {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 100;
-  background-color: #efece5;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.heroContainer h1 {
-  font-weight: 700;
-  font-style: normal;
-  width: 90%;
-  font-size: 5vw;
-  text-align: center;
-  line-height: 100%;
-  z-index: 10;
-  pointer-events: none;
-  margin-bottom: 100px;
-  /* mix-blend-mode: difference; */
-  color: #283894;
-}
-
-.heroContainer h2 {
-  font-family: "linotype-sabon", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  width: 90%;
-  font-size: 3vw;
-  text-align: center;
-  line-height: 100%;
-  z-index: 10;
-  pointer-events: none;
-  /* mix-blend-mode: difference;
-  color: white; */
-  color: black;
-}
-
-.items {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: auto;
-}
-
-.item {
-  position: absolute;
-  width: 150px;
-  height: 200px;
-  background-color: rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .no-scroll {
   height: 100%;
   overflow: hidden;
@@ -102,18 +30,18 @@ html {
   animation: spinnerAnimation 4s ease-in-out 1 forwards, spin 1s linear infinite;
 }
 
-svg path {
+.loaderContainer svg path {
   fill: transparent;
   stroke: #fff;
-  stroke-width: 3px;
-  stroke-dasharray: 900;
-  stroke-dashoffset: 900;
+  stroke-width: 1px;
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
   animation: textAnimation 4s ease-in-out 1 forwards;
 }
 
 @keyframes textAnimation {
   0% {
-    stroke-dashoffset: 900;
+    stroke-dashoffset: 800;
   }
   80% {
     fill: transparent;

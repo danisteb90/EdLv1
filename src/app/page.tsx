@@ -6,8 +6,10 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Footer from "@/components/Footer";
+import { useGSAP } from "@gsap/react";
+import Testing from "@/components/Testing";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Home() {
   useEffect(() => {
@@ -26,9 +28,36 @@ export default function Home() {
     };
   }, []);
 
+  useGSAP(() => {
+    const scrollTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".mainContainer",
+        start: "top top",
+        end: "center bottom",
+        scrub: 1.5,
+        markers: true,
+      },
+    });
+
+    scrollTl.fromTo(
+      "body",
+      {
+        background: "linear-gradient(to bottom, #062448, #EAEAEA)",
+      },
+      {
+        background: "linear-gradient(to bottom, #EAEAEA, #062448)",
+        overwrite: "auto",
+      },
+      1
+    );
+  });
+
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden">
-      <Hero />
+    <div className="mainContainer relative min-h-screen w-full overflow-hidden">
+      <div className="w-full h-screen">
+        <Hero />
+      </div>
+      <Testing />
       <Travel />
       <Footer />
     </div>

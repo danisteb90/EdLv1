@@ -1,0 +1,8 @@
+svg.lineDeco {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 200vw;
+  z-index: 1;
+}

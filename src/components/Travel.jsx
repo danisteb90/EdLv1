@@ -20,24 +20,14 @@ const Travel = () => {
         pin: true,
         pinSpacing: true,
         markers: false,
-        // scrub: 0.5,
         toggleActions: "play reverse play reverse",
-        onEnter: () => {
-          console.log("Entrando en la animación");
-          setAnimationComplete(true);
-        },
-        onLeave: () => {
-          console.log("Animación completada");
-          setAnimationComplete(false);
-        },
-        onEnterBack: () => {
-          console.log("Volviendo a entrar");
-          setAnimationComplete(true);
-        },
-        onLeaveBack: () => {
-          setAnimationComplete(false);
-          console.log("Saliendo hacia atrás");
-        },
+        onEnter: () => setAnimationComplete(true),
+        onLeave: () => setAnimationComplete(false),
+        onEnterBack: () => setAnimationComplete(true),
+        onLeaveBack: () => setAnimationComplete(false),
+        id: "travel-animation",
+        anticipatePin: 1,
+        fastScrollEnd: true,
       },
     });
     clipAnimation
@@ -62,7 +52,8 @@ const Travel = () => {
   });
 
   return (
-    <div id="travel" className="min-h-[100vh] w-screen">
+    <div id="travel" className="min-h-[100vh] w-screen relative z-[2]">
+      <div className="w-full h-[250vh]"></div>
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
         <h2 className="text-5xl uppercase md:text-2xl">Bienvenidos!</h2>
         <div className="mt-5 text-center text-4xl uppercase leading-[0.8] md:text-6xl">
