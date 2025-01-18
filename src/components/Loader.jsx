@@ -14,7 +14,7 @@ const Loader = () => {
       setTimeout(() => {
         setShouldRender(false);
       }, 1000);
-    }, 4000);
+    }, 4500);
 
     return () => {
       document.body.classList.remove("no-scroll");

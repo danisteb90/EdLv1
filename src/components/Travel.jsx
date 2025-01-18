@@ -19,7 +19,7 @@ const Travel = () => {
         end: "+=800 -=200",
         pin: true,
         pinSpacing: true,
-        markers: false,
+        // markers: false,
         toggleActions: "play reverse play reverse",
         onEnter: () => setAnimationComplete(true),
         onLeave: () => setAnimationComplete(false),
